@@ -1,7 +1,7 @@
 # given array to find target sum by 2 nums
 # Possible solution
-# 1. 2-nd array to hold checked num
-# 2. Using 2 pointers
+# 1. Using 2 pointers
+# 2. 2-nd store in HashTable with time complexity O(1) to hold checked num
 # time O(n^2)
 # space O(1)
 def twoNumberSum(array, targetSum):
@@ -23,4 +23,22 @@ def twoNumberSum(array, targetSum):
         r = l + 1
     return result
 
+
 print(twoNumberSum([3, 5, -4, 8, 11, 1, -1, 6], 10))
+
+
+# time O(N)
+# space O(N)
+def twoNumberSum2(array, targetSum):
+    checked = set()
+    res = []
+    for x in array:
+        c = targetSum - x
+        if c in checked:
+            res.append(c)
+            res.append(x)
+        else:
+            checked.add(x)
+    return res
+
+print(twoNumberSum2([3, 5, -4, 8, 11, 1, -1, 6], 10))
