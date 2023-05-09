@@ -2,6 +2,7 @@
 # Possible solution
 # 1. Using 2 pointers
 # 2. 2-nd store in HashTable with time complexity O(1) to hold checked num
+
 # time O(n^2)
 # space O(1)
 def twoNumberSum(array, targetSum):
