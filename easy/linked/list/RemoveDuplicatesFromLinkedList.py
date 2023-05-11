@@ -49,6 +49,8 @@ def iterate_linked_list(head):
 
 head = create_linked_list(data)
 
+# time O(n)
+# space O(1)
 def removeDuplicatesFromLinkedList(linkedList):
     cur = head
     while cur.next is not None:
