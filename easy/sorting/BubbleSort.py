@@ -1,5 +1,5 @@
 
-# time O(n)
+# time O(n^2)
 # space O(1)
 def bubbleSort(array):
     l = 0
