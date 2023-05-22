@@ -1,3 +1,5 @@
+# time O(n)
+# space O(1)
 def selectionSort(array):
     r = len(array) - 1
     l = 0
