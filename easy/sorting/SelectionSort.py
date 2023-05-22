@@ -16,6 +16,7 @@ def selectionSort(array):
             print("---")
             l += 1
             i = l
+            min = i
         i += 1
     return array
 
@@ -27,3 +28,5 @@ def swap(i, j, array):
 
 
 print(selectionSort([8, 5, 2, 9, 5, 6, 3]))
+print("-----------")
+print(selectionSort([1, 3, 2]))
