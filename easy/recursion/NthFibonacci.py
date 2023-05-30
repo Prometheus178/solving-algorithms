@@ -8,7 +8,25 @@ def getNthFib(n):
         return 0
     elif n == 2:
         return 1
-    return getNthFib(n - 2) + getNthFib(n - 1)
+    return getNthFib(n - 1) + getNthFib(n - 2)
 
 
-print(getNthFib(7))
+print(getNthFib(5))
+
+
+# time O(n)
+# space O(n)
+def getNthFibWithStoring(n):
+    store = {1: 0, 2: 1}
+    return getNthFib(n, store)
+
+
+def getNthFib(n, store):
+    if n in store:
+        return store[n]
+
+    store[n] = getNthFib(n - 1, store) + getNthFib(n - 2, store)
+    return store[n]
+
+
+print(getNthFibWithStoring(5))
