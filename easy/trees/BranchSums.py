@@ -3,9 +3,9 @@ import BinaryTree
 
 # time O(N)
 # space O(N)
-def branchSums(nodes):
+def branchSums(tree):
     res = []
-    calculateBranchSum(nodes, 0, res)
+    calculateBranchSum(tree, 0, res)
     return res
 
 
@@ -14,7 +14,8 @@ def calculateBranchSum(nodes, counter, res):
     if nodes.left is None and nodes.right is None:
         res.append(count)
         return
-    calculateBranchSum(nodes.left, count, res)
+    if nodes.left is not None:
+        calculateBranchSum(nodes.left, count, res)
     if nodes.right is not None:
         calculateBranchSum(nodes.right, count, res)
 
@@ -36,4 +37,5 @@ root = {
 }
 
 tree = BinaryTree.create_binary_tree(root)
+BinaryTree.display_binary_tree(tree)
 print(branchSums(tree))
