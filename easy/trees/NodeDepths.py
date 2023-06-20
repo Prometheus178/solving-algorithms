@@ -1,7 +1,9 @@
 import BinaryTree
+
+
 # time O(N)
 # space O(N)
-def depths(root, store , count):
+def depths(root, store, count):
     count = count + 1
     if root.left is not None:
         store.update({root.value: count})
@@ -14,13 +16,13 @@ def depths(root, store , count):
         return
 
 
-
-
 def nodeDepths(root):
     # Write your code here.
     depth = {}
-    depths(root.left, depth, 0)
-    depths(root.right, depth, 0)
+    if root.left is not None:
+        depths(root.left, depth, 0)
+    if root.right is not None:
+        depths(root.right, depth, 0)
     sumDepth = 0
     for x in depth.values():
         sumDepth = sumDepth + x
@@ -39,6 +41,3 @@ tree = BinaryTree.create_binary_tree({"nodes": [{"id": "1", "left": "2", "right"
 
 BinaryTree.display_binary_tree(tree)
 print(nodeDepths(tree))
-
-
-
