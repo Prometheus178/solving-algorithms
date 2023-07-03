@@ -1,7 +1,22 @@
 import Graphs
+
+
+def dfs(node, array, visited):
+    array.append(node.name)
+    children = node.children
+    for ch in children:
+        visited.append(ch)
+    if len(visited) != 0:
+        nextNode = visited.pop()
+        dfs(nextNode, array, visited)
+
+
+# time O(n)
+# space O(n)
 def depthFirstSearch(self, array):
-    # Write your code here.
-    pass
+    visited = []
+    dfs(self, array, visited)
+
 
 data = {
     "nodes": [
@@ -20,5 +35,7 @@ data = {
     "startNode": "A"
 }
 
-
 start_node = Graphs.create_graph(data)
+array = []
+depthFirstSearch(start_node, array)
+print(array)

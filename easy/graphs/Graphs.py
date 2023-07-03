@@ -24,17 +24,6 @@ def create_graph(data):
             node.addChild(child_node)
 
     # Set start node
-    start_node = nodes[data["startNode"]]
 
-    return start_node
+    return nodes.get(data["startNode"])
 
-
-
-def display_graph(start_node):
-    def display_helper(node, level):
-        print("    " * level + "|-- " + str(node.name))
-
-        for child in node.children:
-            display_helper(child, level + 1)
-
-    display_helper(start_node, 0)
