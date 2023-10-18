@@ -1,21 +1,33 @@
-import Graphs
+class Node:
+    def __init__(self, name):
+        self.name = name
+        self.children = []
 
+    def addChild(self, name):
+        self.children.append(Node(name))
+        return self
 
-def dfs(node, array, visited):
-    array.append(node.name)
-    children = node.children
-    for ch in children:
-        visited.append(ch)
-    if len(visited) != 0:
-        nextNode = visited.pop()
-        dfs(nextNode, array, visited)
+    def __repr__(self):
+        return "name " + self.name
+
+    # def __repr__(self):
+    #     children_str = ', '.join(repr(child) for child in self.children)
+    #     return f"Node(name='{self.name}', children=[{children_str}])"
 
 
 # time O(n)
 # space O(n)
+
+# Implementation of Depth First Search method on the Node class, which takes in an empty array, traverses the tree
+# using depth first search, storing the nodes visited in the array and returning the array
 def depthFirstSearch(self, array):
-    visited = []
-    dfs(self, array, visited)
+    array.append(self.name)
+    if len(self.children) == 0:
+        return array
+
+    for x in self.children:
+        depthFirstSearch(x, array)
+    return array
 
 
 data = {
@@ -34,8 +46,21 @@ data = {
     ],
     "startNode": "A"
 }
+nodeA = Node("A")
 
-start_node = Graphs.create_graph(data)
-array = []
-depthFirstSearch(start_node, array)
-print(array)
+nodeB = nodeA.addChild("B")
+nodeA.addChild("C")
+nodeB.addChild("E")
+nodeF = nodeB.addChild("F")
+nodeF.addChild("I")
+nodeF.addChild("J")
+
+nodeD = nodeA.addChild("D")
+nodeD.addChild("H")
+nodeG = nodeD.addChild("G")
+nodeG.addChild("K")
+
+visited = list()
+
+res = depthFirstSearch(nodeA, visited)
+print(res)
